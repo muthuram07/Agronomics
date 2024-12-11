@@ -40,7 +40,6 @@ login-page-main/
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/agronomics.git
-   cd login-page-main
    ```
 
 2. Install dependencies:
