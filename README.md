@@ -1,308 +1,79 @@
-## Step 1) Set Up Project Folder
-To get started, you can use any web development IDE. 
-1. Create a New Project. 
-2. Create the following new files: 
-  * `index.html`
-  * `main.css`
-  * `script.js`
-3. Add general structure to `index.html` with a link to your CSS file:
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Login</title>
-  <link rel = "stylesheet" href = "main.css">
-</head>
-<body>
-</body>
-</html>
-```
+# Agronomics
 
-## Step 2) Set Up [Firebase](https://firebase.google.com/) Project. 
-If you don't already have an account, create one before starting. 
-1. Click `Go to Console` &rarr; `Add Project` &rarr; Name your project.
-2. Click `Continue` &rarr; `Continue`.
-3. Choose `Default Account for Firebase`.
-4. Click `Create Project`. 
-5. When your project is ready, click `Complete`. 
+Agronomics is a comprehensive web application aimed at enhancing agricultural efficiency and addressing calamities through targeted aid. This project empowers farmers and organizations with essential tools and insights.
 
-## Step 3) Connect Firebase to Your Project
-1. In the `Build` menu, select `Authentication`. 
-2. Click `Get Started`.
-3. In the `Sign-In Method` tab, select `Email/Password`. 
-4. Toggle the switch to `Enable`. 
-5. Click `Save`. 
-6. In `Project Settings`, scroll down to `Your apps`. 
-7. Choose `Web`. 
-8. In **Step 1, Register app**:
-    * Name your app &rarr; Click `Register app`. 
-9. In **Step 2, Add Firebase SDK**:
-    * Select `Use a <script> tag`.
-    * Copy the code snippet. 
-    * For now, paste it in `script.js`. The errors will be fixed when you revisit the JS file in **Step 5**. 
-    * Click `Continue to console`.
-    
-## Step 4) HTML 
-The structure for this page is pretty simple. We'll have a container with 2 divs inside it. The site will switch the visibility of the divs depending on the task that the user is trying to complete. 
+![Agronomics Banner](static/images/bg4.jpg)
 
-1.**Within the** `body`**, add a container for the log in elements:** 
-```html
-<div class = "login-container">
-</div>
-```
-2. **Within** `.login-container`**, you'll need 2 additional divs:** `#main` **and** `#create-acct`**:** 
-```html
-<div id= "main">
-</div>
+## Features
 
-<div id = "create-acct">
-</div>
-```
-3. `#main` **will be used to store the sign in elements:**
-```html
-<h1>Sign In</h1>
-<input id = "email" type = "text" placeholder = "Email"></input>
-<input id = "password" type = "password" placeholder = "Password"></input>
-<button id = "submit">Submit</button>
-<p><span>or</span></p>
-<button id = "sign-up">Sign Up</button>
-```
-4. `#create-acct` **will be used to store the create account elements:** 
-```html
-<h1>Create an Account</h1>
-<input id = "email-signup" type = "text" placeholder = "Email *"></input>
-<input id = "confirm-email-signup" type = "email" placeholder = "Confirm Email *"></input>
-<input id = "password-signup" type = "password" placeholder = "Password *"></input>
-<input id = "confirm-password-signup" type = "password" placeholder = "Confirm Password *"></input>
-<button id = "create-acct-btn">Create Account</button>
-<button id = "return-btn">Return to Login</button>
-```
+- **User Authentication**: Secure Firebase-based login and signup with CAPTCHA and unique ID verification.
+- **File Uploads**: Simplified upload module for agricultural data.
+- **Pesticide Guidance**: Access detailed pesticide usage information.
+- **Government Schemes**: Explore available schemes for agricultural benefits.
+- **Calamity Monitoring**: Tools for tracking and managing agricultural calamities.
 
-5. **At the bottom of the body, link `script.js`.**
-```html
- <script type = "module" src = "script.js"></script>
-```
+## Project Demo
 
- **2 things to note here:**
- 1. Adding "module" as the type is an important step to make sure that we can import methods from firebase later. 
- 2. If you attempt to run your project locally with the script linked in your HTML, you will get an error. More detail on this in **Step 5**.
- 
-## Step 5) CSS
+![Homepage Demo](static/images/homepage-demo.png)
 
-**Remove the default margins, padding, and box-sizing from all of the elements on the page.**
-``` css
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
-```
+## Tech Stack
 
-**Choose a background color for the body of the page.**
-``` css
-body {
-  background-color: lightblue;
-}
-```
+- **Frontend**: React.js
+- **Backend**: Python Flask
+- **Authentication**: Firebase
+- **Database**: Firebase Realtime Database
 
-**Center-align the main heading ("Log In") and add a bottom margin.**
-``` css
-h1 {
-  margin-bottom: 8%;
-  text-align: center;
-}
-```
-
-**Style the paragraph element ("or") to be center with horizontal lines on each side.**
-``` css
-p {
-  margin-top: 5%;
-  margin-bottom: 5%;
-  width: 100%;
-  text-align: center;
-  border-bottom: 1px solid #000;
-  line-height: 0.1em;
-}
-
-p span {
-  background:#fff;
-  padding:0 10px;
-}
-```
-
-**Add some breathing room around the input fields.**
-``` css
-input {
-  margin-bottom: 3%;
-}
-
-input:last-of-type {
-  margin-bottom: 0;
-}
-
-input, button {
-  padding: 3%;
-  width: 100%;
-}
-```
-
-**Vertically and horizontally center the `login-container`.**
-``` css
-.login-container {
-  background-color: white;
-  padding: 7%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  /* horizontal align */
-  width: 40vw;
-  margin-left: 30vw;
-  /* vertical align */
-  height: 70vh;
-  margin-top: 15vh;
-}
-```
-
-**Hide the `create-acct` div on the original loading of the page.**
-```css
-#create-acct {
-  display: none;
-}
+## Folder Structure
 
 ```
-
-**Style the `submit`, `create-acct-btn` and `return-btn`.**
-``` css
-button:hover {
-  cursor: pointer;
-  opacity: 0.8;
-  transition: 0.3s;
-}
-
-#submit, #create-acct-btn {
-  background-color: #0583D2;
-  color: white;
-  border: none;
-  margin-top: 5%;
-}
-
-#return-btn {
-  background: none;
-  color: grey;
-  text-decoration: underline;
-  border: none;
-  margin-top: 3%;
-}
-
-#sign-up {
-  border: none;
-}
+login-page-main/
+├── app.py                # Main application script
+├── static/               # Static assets (CSS, JS, images)
+├── templates/            # HTML templates
+├── README.md             # Project documentation
+├── best.pt               # Model file
+└── .vscode/              # IDE configurations
 ```
- 
-## Step 6) JavaScript
-``` java
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCybmXAUWgGDCMNQWvcRdaMgE31I1GkF8M",
-  authDomain: "log-in-authentication-ac1b6.firebaseapp.com",
-  projectId: "log-in-authentication-ac1b6",
-  storageBucket: "log-in-authentication-ac1b6.appspot.com",
-  messagingSenderId: "735126972855",
-  appId: "1:735126972855:web:b26c16bd1de14bf361e032",
-  measurementId: "G-3GKSESXV7S"
-};
+## Setup and Installation
 
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth(app);
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/agronomics.git
+   cd login-page-main
+   ```
 
-const submitButton = document.getElementById("submit");
-const signupButton = document.getElementById("sign-up");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-const main = document.getElementById("main");
-const createacct = document.getElementById("create-acct")
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-const signupEmailIn = document.getElementById("email-signup");
-const confirmSignupEmailIn = document.getElementById("confirm-email-signup");
-const signupPasswordIn = document.getElementById("password-signup");
-const confirmSignUpPasswordIn = document.getElementById("confirm-password-signup");
-const createacctbtn = document.getElementById("create-acct-btn");
+3. Run the application:
+   ```bash
+   python app.py
+   ```
 
-const returnBtn = document.getElementById("return-btn");
+4. Open the application in your browser at `http://127.0.0.1:5000`.
 
-var email, password, signupEmail, signupPassword, confirmSignupEmail, confirmSignUpPassword;
+## Screenshots
 
-createacctbtn.addEventListener("click", function() {
-  var isVerified = true;
+- **Login Page**:
+  ![Login Page](static/images/login-page.png)
 
-  signupEmail = signupEmailIn.value;
-  confirmSignupEmail = confirmSignupEmailIn.value;
-  if(signupEmail != confirmSignupEmail) {
-      window.alert("Email fields do not match. Try again.")
-      isVerified = false;
-  }
+- **Pesticide Information Page**:
+  ![Pesticide Page](static/images/pesticide-page.png)
 
-  signupPassword = signupPasswordIn.value;
-  confirmSignUpPassword = confirmSignUpPasswordIn.value;
-  if(signupPassword != confirmSignUpPassword) {
-      window.alert("Password fields do not match. Try again.")
-      isVerified = false;
-  }
-  
-  if(signupEmail == null || confirmSignupEmail == null || signupPassword == null || confirmSignUpPassword == null) {
-    window.alert("Please fill out all required fields.");
-    isVerified = false;
-  }
-  
-  if(isVerified) {
-    createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
-      .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      // ...
-      window.alert("Success! Account created.");
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-      window.alert("Error occurred. Try again.");
-    });
-  }
-});
+## Contribution Guidelines
 
-submitButton.addEventListener("click", function() {
-  email = emailInput.value;
-  console.log(email);
-  password = passwordInput.value;
-  console.log(password);
+We welcome contributions to improve Agronomics! Follow these steps:
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      console.log("Success! Welcome back!");
-      window.alert("Success! Welcome back!");
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log("Error occurred. Try again.");
-      window.alert("Error occurred. Try again.");
-    });
-});
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Commit your changes and push to your fork.
+4. Open a pull request for review.
 
-signupButton.addEventListener("click", function() {
-    main.style.display = "none";
-    createacct.style.display = "block";
-});
 
-returnBtn.addEventListener("click", function() {
-    main.style.display = "block";
-    createacct.style.display = "none";
-});
-```
+
+---
+
+Thank you for using Agronomics! Together, we can transform agriculture.
