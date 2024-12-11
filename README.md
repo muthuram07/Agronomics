@@ -2,7 +2,7 @@
 
 Agronomics is a comprehensive web application aimed at enhancing agricultural efficiency and addressing calamities through targeted aid. This project empowers farmers and organizations with essential tools and insights.
 
-![Agronomics Banner](static/images/bg4.jpg)
+![Agronomics Banner](static/images/bg2.jpg)
 
 ## Features
 
@@ -14,7 +14,7 @@ Agronomics is a comprehensive web application aimed at enhancing agricultural ef
 
 ## Project Demo
 
-![Homepage Demo](static/images/homepage-demo.png)
+![Homepage Demo](static/images/home.png)
 
 ## Tech Stack
 
@@ -58,10 +58,14 @@ login-page-main/
 ## Screenshots
 
 - **Login Page**:
-  ![Login Page](static/images/login-page.png)
+  ![Login Page](static/images/login.png)
 
-- **Pesticide Information Page**:
-  ![Pesticide Page](static/images/pesticide-page.png)
+- **Upload Page**:
+  ![Upload Page](static/images/upload.png)
+
+
+
+  ![Result Page](static/images/result.png)
 
 ## Contribution Guidelines
 
