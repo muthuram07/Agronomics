@@ -1,82 +1,112 @@
-# Agronomics
+# Agri-Intelligence Dashboard 🌾
 
-Agronomics is a comprehensive web application aimed at enhancing agricultural efficiency and addressing calamities through targeted aid. This project empowers farmers and organizations with essential tools and insights.
+> **Project Agronomics**: A next-generation agricultural analytics platform empowering farmers with real-time market insights, AI-driven crop diagnosis, and simplified government comparisons.
 
-![Agronomics Banner](static/images/bg2.jpg)
-
-## Features
-
-- **User Authentication**: Secure Firebase-based login and signup with CAPTCHA and unique ID verification.
-- **File Uploads**: Simplified upload module for agricultural data.
-- **Pesticide Guidance**: Access detailed pesticide usage information.
-- **Government Schemes**: Explore available schemes for agricultural benefits.
-- **Calamity Monitoring**: Tools for tracking and managing agricultural calamities.
-
-## Project Demo
-
-![Homepage Demo](static/images/home.png)
-
-## Tech Stack
-
-- **Frontend**: React.js
-- **Backend**: Python Flask
-- **Authentication**: Firebase
-- **Database**: Firebase Realtime Database
-
-## Folder Structure
-
-```
-login-page-main/
-├── app.py                # Main application script
-├── static/               # Static assets (CSS, JS, images)
-├── templates/            # HTML templates
-├── README.md             # Project documentation
-├── best.pt               # Model file
-└── .vscode/              # IDE configurations
-```
-
-## Setup and Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/agronomics.git
-   ```
-
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Run the application:
-   ```bash
-   python app.py
-   ```
-
-4. Open the application in your browser at `http://127.0.0.1:5000`.
-
-## Screenshots
-
-- **Login Page**:
-  ![Login Page](static/images/login.png)
-
-- **Upload Page**:
-  ![Upload Page](static/images/upload.png)
-
-
-
-  ![Result Page](static/images/result.png)
-
-## Contribution Guidelines
-
-We welcome contributions to improve Agronomics! Follow these steps:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bugfix.
-3. Commit your changes and push to your fork.
-4. Open a pull request for review.
-
-
+![Next.js](https://img.shields.io/badge/Next.js_15-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase_Auth-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
+![Python Flask](https://img.shields.io/badge/Python_Flask-backend-blue?style=for-the-badge&logo=python&logoColor=white)
 
 ---
 
-Thank you for using Agronomics! Together, we can transform agriculture.
+## 🚀 Overview
+
+**Agronomics** has been transformed from a static informational site into a dynamic **Agri-Intelligence Dashboard**. The platform leverages the **Ultra-Clean Light** design system to provide a zero-distraction interface for farmers to access critical data even in bright outdoor conditions.
+
+### ✨ Key Features
+
+*   **📊 Smart Market Dashboard**: Real-time integration with Agmarknet APIs to track commodity prices across mandis.
+*   **🤖 AI Crop Doctor**: Computer vision-powered crop disease diagnosis (via Python YOLOv5 backend).
+*   **🔐 Secure Authentication**: Robust Firebase Auth supporting **Google Sign-In**, Email/Password, and a developer-friendly **Guest Mode**.
+*   **📈 Profit Calculator**: Intelligent algorithms that combine weather forecasts and market trends to recommend "Sell" or "Hold" actions.
+*   **🎨 Ultra-Clean Design**: A "Flat Design 2.0" aesthetic using purely functional whitespace, Emerald-600 accents, and **Geist Sans** typography for maximum legibility.
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend (Modern Experience)
+*   **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+*   **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+*   **Components**: [shadcn/ui](https://ui.shadcn.com/) + Radix UI
+*   **Icons**: Lucide React
+*   **State**: React Context (Auth, Zen Mode)
+
+### Backend (Intelligence Layer)
+*   **Server**: Python Flask
+*   **ML Model**: PyTorch / YOLOv5 (`best.pt`)
+*   **Database**: Firebase Realtime Database
+
+---
+
+## 📂 Project Structure
+
+```bash
+Agronomics/
+├── agronomics-nextjs/       # 🚀 NEW: Modern Frontend Application
+│   ├── app/                 # Next.js App Router pages
+│   ├── components/          # Reusable UI components
+│   ├── lib/                 # Utility functions & Firebase config
+│   └── public/              # Static assets
+├── app.py                   # 🧠 ML Inference Server (Python)
+├── best.pt                  # Trained YOLOv5 Model
+├── templates/               # Legacy templates (Deprecating)
+└── static/                  # Legacy assets
+```
+
+---
+
+## ⚡ Getting Started
+
+### Prerequisites
+*   **Node.js** (v18 or higher)
+*   **Python** (v3.9 or higher)
+
+### 1️⃣ Frontend Setup (Next.js)
+Navigate to the frontend directory and install dependencies:
+
+```bash
+cd agronomics-nextjs
+npm install
+npm run dev
+```
+> The dashboard will be available at [http://localhost:3000](http://localhost:3000).
+
+### 2️⃣ Backend Setup (Python)
+In a separate terminal, start the inference server:
+
+```bash
+# From the root directory
+pip install -r requirements.txt
+python app.py
+```
+> The ML API will run at [http://127.0.0.1:5000](http://127.0.0.1:5000).
+
+---
+
+## 🔐 Credentials & Config
+
+**Firebase Configuration**
+The application is pre-configured with the `agro-project-31` project.
+*   **Auth Domain**: `agro-project-31.firebaseapp.com`
+*   **Guest Mode**: Enabled for testing without credentials.
+
+---
+
+## 📸 Visual Tour
+
+### Intelligent Dashboard
+*Real-time sparks charts and price tables optimized for readability.*
+
+### Market Analysis
+*Deep-dive analytics to compare historical price trends.*
+
+---
+
+## 🤝 Contribution
+
+1.  Fork the repo
+2.  Create your feature branch (`git checkout -b feature/amazing-feature`)
+3.  Commit your changes (`git commit -m 'Add some amazing feature'`)
+4.  Push to the branch (`git push origin feature/amazing-feature`)
+5.  Open a Pull Request
