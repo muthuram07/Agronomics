@@ -1,0 +1,8 @@
+Flask==3.0.0
+Werkzeug==3.0.1
+ultralytics==8.0.196
+gunicorn==21.2.0
+torch
+torchvision
+torchaudio
+flask-cors
