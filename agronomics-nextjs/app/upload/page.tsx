@@ -42,18 +42,36 @@ export default function UploadPage() {
     const handleUpload = async () => {
         if (!selectedFile) return
         setUploading(true)
+        setAnalysisResult(null)
 
-        // SIMULATED BACKEND DELAY & LOGIC
-        setTimeout(async () => {
-            setUploading(false)
+        try {
+            const formData = new FormData()
+            formData.append('file', selectedFile)
 
-            // Mock Analysis Result
-            const detectedCrop = "Wheat" // Simulating wheat detection
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
+            const response = await fetch(`${apiUrl}/predict`, {
+                method: 'POST',
+                body: formData,
+            })
+
+            if (!response.ok) {
+                throw new Error('Analysis failed')
+            }
+
+            const data = await response.json()
+            
+            if (data.error) {
+                throw new Error(data.error)
+            }
+
+            const detectedCrop = data.label || "Unknown"
+            const confidence = Math.round((data.confidence || 0) * 100)
+
             setAnalysisResult({
                 crop: detectedCrop,
-                health: "At Risk",
-                disease: "Yellow Rust (Early Stage)",
-                confidence: 94
+                health: confidence > 70 ? "Healthy" : "At Risk",
+                disease: confidence > 70 ? "No major issues detected" : `Potential issue: ${detectedCrop}`,
+                confidence: confidence
             })
 
             // Fetch Market Context for Detected Crop
@@ -68,8 +86,12 @@ export default function UploadPage() {
             } catch (err) {
                 console.error("Failed to fetch context", err)
             }
-
-        }, 2000)
+        } catch (err: any) {
+            console.error("Upload error:", err)
+            alert(err.message || "Something went wrong during analysis")
+        } finally {
+            setUploading(false)
+        }
     }
 
     return (
